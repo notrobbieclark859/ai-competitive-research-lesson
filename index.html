@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conducting Competitive Research with AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <nav>
+      <a href="#overview">Overview</a>
+      <a href="#tools">Tools</a>
+      <a href="#steps">Steps</a>
+      <a href="#reflection">Reflection</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="overview">
+    <div class="hero-text">
+      <h1><span class="gradient-text">Conducting Competitive Research with AI</span></h1>
+      <p>Learn to collect, analyze, and present competitor insights with tools like ChatGPT, Perplexity, Gamma, and ScholarGPT—all in under an hour.</p>
+      <a href="#tools" class="cta-button">Start Lesson</a>
+    </div>
+    <div class="hero-image">
+      <img src="assets/hero.jpg" alt="Lesson hero image placeholder" />
+    </div>
+  </section>
+
+  <section class="tool-matrix fade-in" id="tools">
+    <h2><span class="gradient-text">AI Tool Matrix</span></h2>
+    <p class="section-intro">These are the AI tools used throughout this research and presentation creation process. You may have other favorites, but if you haven’t explored Perplexity or ScholarGPT yet, we highly recommend giving them a try.</p>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <h3>ChatGPT</h3>
+        <p>Synthesize findings and draft insights.</p>
+        <a href="https://chat.openai.com" target="_blank" class="tool-link">Open ChatGPT →</a>
+      </div>
+      <div class="tool-card">
+        <h3>Perplexity</h3>
+        <p>Collect live data with citations for accuracy.</p>
+        <a href="https://www.perplexity.ai" target="_blank" class="tool-link">Open Perplexity →</a>
+      </div>
+      <div class="tool-card">
+        <h3>Gamma</h3>
+        <p>Create auto-formatted, presentation-ready slides.</p>
+        <a href="https://gamma.app" target="_blank" class="tool-link">Open Gamma →</a>
+      </div>
+      <div class="tool-card">
+        <h3>ScholarGPT</h3>
+        <p>Search academic and peer-reviewed sources.</p>
+        <a href="https://scholargpt.io" target="_blank" class="tool-link">Open ScholarGPT →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="lesson-section fade-in" id="steps">
+    <h2><span class="gradient-text">Step 1. Define the Research Goal</span></h2>
+    <div class="section-content">
+      <div class="text-block">
+        <p><strong>Before diving into tools, decide what you’re trying to learn and who you want to compare.</strong> A focused goal helps the AI return answers you can actually use.</p>
+
+        <p><strong>1. Get clear on the basics</strong></p>
+        <ul>
+          <li>What question am I trying to answer? </li>
+          <li>Who are the main and smaller players?</li>
+          <li>What do I need to compare — features, prices, audience, or integrations?</li>
+          <li>How should the AI show the results — a list, table, or short summaries?</li>
+        </ul>
+
+        <p><strong>2. Tell the AI exactly what you want.</strong> You can control the format, tone, and amount of detail right in your prompt.</p>
+
+        <blockquote>“Act as a market researcher. For the category <em>[your category]</em>, list 8–12 competitors (include 3 smaller or niche ones). Return the results <strong>in a table</strong> with these columns: | Name | One-line description | Target user | Top 3 features | Price range. Use clear, neutral language and include any sources if available.”</blockquote>
+
+        <p>Want to explore connected tools? Add:</p>
+        <blockquote>“Also note any <strong>related or partner tools</strong> these companies integrate with.”</blockquote>
+
+        <p><strong>Tip:</strong> Start your scan in <strong>Perplexity</strong> — it gives you live, cited results from the web, so you can see where each claim comes from and stay current with new releases. Once you’ve gathered the data, use <strong>ChatGPT</strong> to cluster insights, format tables, and clean the language for presentation.</p>
+      </div>
+      <div class="prompt-panel">
+  <h3>Build Your Prompt</h3>
+
+  <div class="form-group">
+    <label>Category</label>
+    <input type="text" id="category" placeholder="e.g., Productivity SaaS" />
+  </div>
+
+  <div class="form-row">
+    <div class="col">
+      <label>Number of Competitors</label>
+      <input type="number" id="num" placeholder="e.g., 10" min="5" max="20" />
+    </div>
+    <div class="col">
+      <label>Include Niche Players</label>
+      <select id="niche">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <p><strong>Attributes</strong></p>
+    <div class="attribute-grid">
+      <label><input type="checkbox" value="Description" checked> Description</label>
+      <label><input type="checkbox" value="Target user" checked> Target user</label>
+      <label><input type="checkbox" value="Top 3 features" checked> Top 3 features</label>
+      <label><input type="checkbox" value="Price range" checked> Price range</label>
+      <label><input type="checkbox" value="Value proposition" checked> Value proposition</label>
+      <label><input type="checkbox" value="Key differentiator" checked> Key differentiator</label>
+      <label><input type="checkbox" value="Other"> Other</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Output Format</label>
+    <select id="format">
+      <option value="table">Table</option>
+      <option value="bulleted list">Bulleted List</option>
+    </select>
+  </div>
+
+  <button class="generate-btn" onclick="buildPrompt()">Generate Prompt</button>
+  <textarea id="output"></textarea>
+  <button class="copy-btn" onclick="copyPrompt()">Copy Prompt</button>
+  <button class="perplexity-btn" onclick="openInPerplexity()">Open in Perplexity</button>
+</div>
+    </div>
+    <script>
+function buildPrompt() {
+  const cat = document.getElementById('category').value || '[your category]';
+  const num = document.getElementById('num').value || '10';
+  const niche = document.getElementById('niche').value === 'yes' ? ' (include 3 smaller or niche ones)' : '';
+  const format = document.getElementById('format').value;
+
+  const prompt = `Act as a market researcher. For the category ${cat}, list ${num} competitors${niche}. Return the results in a ${format} with these columns: | Name | One-line description | Target user | Top 3 features | Price range. Use clear, neutral language and include sources if available.`;
+  document.getElementById('output').value = prompt;
+}
+
+function copyPrompt() {
+  const text = document.getElementById('output');
+  text.select();
+  navigator.clipboard.writeText(text.value);
+  alert('Prompt copied to clipboard!');
+}
+
+function openInPerplexity() {
+  const prompt = document.getElementById('output').value.trim();
+  if (!prompt) {
+    alert('Please generate a prompt first!');
+    return;
+  }
+  const encoded = encodeURIComponent(prompt);
+  window.open(`https://www.perplexity.ai/search?q=${encoded}`, '_blank');
+}
+</script>
+  </section>
+
+  <section class="lesson-section fade-in">
+    <h2><span class="gradient-text">Step 2. Gather Competitor Data</span></h2>
+    <div class="section-content">
+      <div class="text-block">
+        <p><strong>Collect structured evidence</strong> across official sites, pricing pages, release notes, help centers, App Store/Play reviews, and Reddit threads. Ask AI to extract <em>comparable</em> fields.</p>
+        <p><strong>Fields to capture</strong></p>
+        <ul>
+          <li>Core features &amp; workflows (bulleted, not marketing copy)</li>
+          <li>Pricing model &amp; limits (tiers, MAUs, seats, credits, overages)</li>
+          <li>Integrations &amp; ecosystems (POS, CRM, analytics, file types)</li>
+          <li>Recent launches/roadmap signals (last 12–18 months)</li>
+          <li>User sentiment themes with representative quotes (praise/complaints)</li>
+        </ul>
+        <p><strong>Extraction prompts</strong></p>
+        <blockquote>“From these URLs, extract <em>feature inventory</em>, <em>pricing structure</em>, <em>integrations</em>, and <em>release highlights (with dates)</em>. Return a compact table. Include source links for each cell.”</blockquote>
+        <blockquote>“Summarize top 6 praise and top 6 complaints from App Store/Reddit for <em>[competitor]</em>. Group by theme and add one short quote per theme.”</blockquote>
+        <p><strong>Deliverables</strong></p>
+        <ul>
+          <li>Competitor factsheet per product (one page)</li>
+          <li>Unified feature table (rows = features, columns = competitors)</li>
+          <li>Pricing snapshot with notes on fine print and constraints</li>
+        </ul>
+      </div>
+      <img src="assets/step2.jpg" alt="Step 2 placeholder" />
+    </div>
+  </section>
+
+  <section class="lesson-section fade-in">
+    <h2><span class="gradient-text">Step 3. Identify Patterns and Gaps</span></h2>
+    <div class="section-content">
+      <div class="text-block">
+        <p><strong>Cluster, compare, and label the landscape.</strong> Separate “parity features” from real differentiators. Weight findings by frequency and evidence quality.</p>
+        <p><strong>Analysis moves</strong></p>
+        <ul>
+          <li>Cluster features into capability groups (e.g., onboarding, automation, integrations, reporting).</li>
+          <li>Mark table‑stakes vs. differentiators vs. experiments.</li>
+          <li>Map pain points to the competitors that trigger them most often.</li>
+          <li>Score each competitor on <em>fit for target user</em>, <em>complexity</em>, and <em>switching friction</em>.</li>
+        </ul>
+        <p><strong>Pattern prompts</strong></p>
+        <blockquote>“Using the feature table and sentiment themes, group capabilities into 4–6 clusters. For each, note which competitors lead, which lag, and where users are still creating workarounds.”</blockquote>
+        <blockquote>“Given these clusters, identify 5 white‑space opportunities and 5 risky me‑too areas. Return as two lists with rationale.”</blockquote>
+        <p><strong>Output</strong>: a one‑page ‘State of the Category’ summary and a short list of opportunity bets.</p>
+      </div>
+      <img src="assets/step3.jpg" alt="Step 3 placeholder" />
+    </div>
+  </section>
+
+  <section class="lesson-section fade-in">
+    <h2><span class="gradient-text">Step 4. Create the Presentation</span></h2>
+    <div class="section-content">
+      <div class="text-block">
+        <p><strong>Translate analysis into a crisp narrative.</strong> Keep it decision‑oriented and cite sources where it matters.</p>
+        <p><strong>Suggested deck (6–8 slides)</strong></p>
+        <ol>
+          <li>Category snapshot (who, what, why now)</li>
+          <li>Competitor map (leaders, challengers, niche)</li>
+          <li>Feature parity vs. differentiation matrix</li>
+          <li>User sentiment themes (praise/complaints with 1‑line quotes)</li>
+          <li>Pricing &amp; packaging patterns (gotchas called out)</li>
+          <li>Opportunities &amp; risks (white space vs. me‑too traps)</li>
+          <li>Positioning options (2–3 concise directions)</li>
+          <li>Next steps (tests, interviews, proof points)</li>
+        </ol>
+        <p><strong>Prompt</strong></p>
+        <blockquote>“Turn the analysis into an 8‑slide outline with slide titles, 3 bullet points each, and a short speaker note. Keep tone neutral and evidence‑based.”</blockquote>
+      </div>
+      <img src="assets/step4.jpg" alt="Step 4 placeholder" />
+    </div>
+  </section>
+
+  <section class="lesson-section fade-in">
+    <h2><span class="gradient-text">Step 5. Reflect and Document</span></h2>
+    <div class="section-content">
+      <div class="text-block">
+        <p><strong>Harden the insights and bake the workflow into your practice.</strong></p>
+        <p><strong>Quality checks</strong></p>
+        <ul>
+          <li>Bias scan: ask AI to list likely blind spots (dominant voices, underserved users, vendor marketing).</li>
+          <li>Citation spot‑check: open 3–5 sources and confirm the claim language.</li>
+          <li>Replicability: can another teammate reproduce your table from your prompts?</li>
+        </ul>
+        <p><strong>Save to your Prompt Library</strong></p>
+        <ul>
+          <li>Landscape scan prompt</li>
+          <li>Review‑mining prompt</li>
+          <li>Clustering &amp; gap‑finding prompt</li>
+          <li>Deck‑outline prompt</li>
+        </ul>
+        <p><em>Deliverable:</em> Updated prompt set + links to your tables and slides.</p>
+      </div>
+      <img src="assets/step5.jpg" alt="Step 5 placeholder" />
+    </div>
+  </section>
+
+  <footer id="reflection">
+    <p>© 2025 AI for UI — Built with Outfit, ChatGPT, and love for learning.</p>
+  </footer>
+</body>
+</html>

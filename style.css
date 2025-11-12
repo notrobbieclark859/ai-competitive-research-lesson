@@ -1,0 +1,311 @@
+body {
+  margin: 0;
+  font-family: "Outfit", sans-serif;
+  background: #0c0c0f;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  background: #0c0c0f;
+  /* position: sticky;
+  top: 0; */
+}
+
+.navbar a {
+  color: rgba(255, 255, 255, 0.8);
+  margin-left: 1.5rem;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.navbar a:hover {
+  color: #fff;
+}
+
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+  padding: 4rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.tool-matrix {
+  padding: 4rem 3rem;
+  background: #16161a;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.lesson-section {
+  padding: 4rem 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.hero-text h1 {
+  font-size: 2.5rem;
+  line-height: 1.3;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #ff6e7f 0%, #f8d800 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  background: #e25050;
+  padding: 0.8rem 1.5rem;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.cta-button:hover {
+  background: linear-gradient(90deg, #ff6e7f 0%, #f8d800 100%);
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.tool-card {
+  background: #0c0c0f;
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.tool-link {
+  display: inline-block;
+  margin-top: 0.8rem;
+  color: #ff6e7f;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.tool-link:hover {
+  color: #f8d800;
+}
+
+.section-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+}
+
+.section-content img {
+  max-width: 480px;
+  border-radius: 10px;
+}
+
+.text-block {
+  flex: 1;
+  min-width: 280px;
+}
+
+blockquote {
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+  border-left: 3px solid #ff6e7f;
+  padding-left: 1rem;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  background: #16161a;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Fade-in Animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: left;
+    padding: 3rem 1.25rem;
+  }
+
+  .tool-matrix,
+  .lesson-section {
+    padding: 3rem 1.25rem;
+    max-width: 100%;
+  }
+
+  .section-content {
+    flex-direction: column;
+  }
+
+  .navbar {
+    flex-direction: column;
+  }
+
+  .navbar a {
+    margin: 0.5rem;
+  }
+}
+/* Step 1 layout */
+#steps .section-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+#steps .text-block {
+  flex: 1 1 55%;
+  min-width: 320px;
+}
+
+#steps .prompt-panel {
+  flex: 1 1 40%;
+  max-width: 420px;
+  background-color: #1b1b1b;
+  color: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+#steps .prompt-panel h3 {
+  text-align: center;
+  color: var(--accent-color, #ff7b00);
+  margin-bottom: 16px;
+}
+
+#steps .prompt-panel input:not([type="checkbox"]),
+#steps .prompt-panel select,
+#steps .prompt-panel textarea {
+  width: 100%;
+  margin: 6px 0 12px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background-color: #262626;
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+}
+
+#steps .attribute-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 12px;
+  margin-bottom: 12px;
+}
+
+#steps .generate-btn,
+#steps .copy-btn {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+}
+
+#steps .generate-btn {
+  background: linear-gradient(90deg, #ff7b00, #ffb347);
+  color: #fff;
+}
+
+#steps .copy-btn {
+  background: #333;
+  color: #fff;
+}
+
+#steps .prompt-panel textarea {
+  height: 80px;
+  resize: none;
+}
+
+/* Responsive stack on narrow screens */
+@media (max-width: 900px) {
+  #steps .section-content {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  #steps .prompt-panel {
+    max-width: 100%;
+  }
+}
+
+#steps .attribute-grid label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.3;
+}
+
+#steps .attribute-grid input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+}
+
+/* Match "Start Lesson" button styling */
+#steps .perplexity-btn {
+  display: inline-block;
+  width: 100%;
+  margin-top: 1rem;
+  background: #e25050;
+  padding: 0.8rem 1.5rem;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  border: none;
+  font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#steps .perplexity-btn:hover {
+  background: linear-gradient(90deg, #ff6e7f 0%, #f8d800 100%);
+}
